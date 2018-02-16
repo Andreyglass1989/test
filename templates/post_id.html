@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+
+{% block head_title %}Post #{{ post.id }} {% endblock head_title %}
+
+
+{% block body %}
+
+<a class="ml-3" href="{% url 'main' %}">All users</a>
+
+<h3 class="text-center mt-5 mb-3">Posts number - {{ post.id }}</h3>
+<div class="container">
+ 	
+	<h5>{{ post.title }}</h5>
+	 	<p>{{ post.description }}</p>
+	 	<p><span style="float:left; color: green">Создан: {{post.date_add|date:"d F Y"}}</span> <span style="float: right; color: blue">Изменен: {{post.date_change|date:"d F Y"}}</span></p>
+	 	<br/>
+	<p>status - {% if post.public == True %}<span style="color:green">Public</span>
+				{% else %}<span style="color:red">No public</span>{% endif %}
+	</p>
+
+</div>
+
+{% endblock body %}

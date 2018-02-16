@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+
+
+{% block body %}
+
+<h3 class="text-center mt-5 mb-3">Users:</h3>
+<div class="container">
+ {% for user in users_all %}
+	<a style="font-size: 1.5vw" href='/blog/users/{{ user.id }}/'>{{ user.username }}</a>
+	<br/>
+ {% endfor %}
+
+</div>
+
+
+<!-- 
+	<div class="text-center">
+		<h1>{{ title }}</h1>
+		<h1>Hello, world!</h1>
+	</div>
+
+	<div class="container">
+		<div class="row">	
+			<div class="col">
+				<p>{{ content }}</p>
+			</div>
+		</div>
+		{% if premium_content %}  <!--if request.user.is_authenticated -->
+<!-- 		<div class="row">
+			<div class="col">
+				<h1>Premium</h1>
+				{{ premium_content }}
+			</div>
+		</div>	
+		{% endif %}
+	</div> -->
+{% endblock body %}

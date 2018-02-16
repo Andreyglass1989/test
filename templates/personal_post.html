@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+
+{% block head_title %}Post{% endblock head_title %}
+
+
+{% block body %}
+
+<a class="ml-3" href="{% url 'main' %}">All users</a>
+
+<h3 class="text-center mt-5 mb-3">Posts:</h3>
+<div class="container" >
+	<button type="button" class="btn btn-success" style="float:right">New Post</button>
+	<br class="mb-5" />
+ {% for p in posts %}
+ 	{% if p.public == True %}
+	 	<h5>{{ p.title }}</h5>
+	 	<p>{{ p.description }}</p>
+	 	<p><span style="float:left; color: green">Создан: {{p.date_add|date:"d F Y"}}</span> <span style="float: right; color: blue">Изменен: {{p.date_change|date:"d F Y"}}</span></p>
+	 	<br class="mb-2" />
+	 	<a href="/blog/{{p.id}}/update/"><button type="button" class="btn btn-warning">Change</button></a>
+	{% endif %}	
+
+	<br class="mb-5" />
+ {% endfor %}
+
+</div>
+
+{% endblock body %}
